@@ -30,6 +30,7 @@ The code shared has been utilized for sentiment analysis on Twitter data. The ou
 
 An example text of &quot; **A long time ago in a galaxy far, far away**&quot; would look like below in a 300 dimension common crawl vocabulary file.
 
+```
 [  9.29011000e-01   5.29604000e-01  -6.65878000e-01   4.08702000e-01
 
    1.12849000e+00  -2.27910800e+00  -1.80958300e+00  -1.02889600e+00
@@ -179,6 +180,7 @@ An example text of &quot; **A long time ago in a galaxy far, far away**&quot; wo
    2.87931000e-01  -1.06683200e+00   1.36519900e+00   7.03638000e-01
 
   -2.84436500e-01   2.00400000e-02  -1.95623124e+00   9.32337600e-01]
+```
 
 <a name="introductionInputData" />
 ## Input Data
@@ -315,7 +317,7 @@ line\_vector : Numpy array containing the numeric vector representation of the s
 
 ### Loading Individual function
 
-```
+```python
 import sys
 
 sys.path.append(&lt;path to the Featurization.py directory&gt;
