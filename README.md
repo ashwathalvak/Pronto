@@ -3,39 +3,21 @@ Open source sentiment analysis tool
 
 | VECTORIZATION OF INPUT TEXT USING GloVe VECTORS        |
 | --- |
-| [Introduction](#introduction)|
-| Example        |
-| Input Data        |
-| 1)        Vocabulary File        |
-| 2)        Text String        |
-| Dependencies        |
-| Python dependency        |
-| Function Explanation        |
-| 1)        load\_bin\_vec        |
-| 2)        vector\_from\_line        |
-| Examples        |
-| Loading Python file        |
-| Calling the Function        |
-| Loading Individual function        |
-| Executing the code        |
-| Help        |
-| Processing text in Social Media Posts        |
-| Input Data        |
-| Dependencies        |
-| Python Dependency        |
-| Function Explanation        |
-| cleantext        |
-| Removing Stop words and Stemming        |
-| Python Dependency        |
-| NLTK Package        |
-| Function Explanation        |
-| removeStopwordswithStemming        |
-| Execution of Unit Test        |
+| [About](#about)|
+| [Introduction](#introduction)        |
+| [Input Data](#introductionInputData)        |
+| [Dependencies](#dependencies)        |
+| [Function Explanation](#dependencies)        |
+| [Examples](#examples)        |
+| [Help](#help)        |
+| [Processing text in Social Media Posts](#processingSocialMediaPosts)        |
+| [Removing Stop words and Stemming](#stopWords)        |
+| [Testing](#testing)        |
 
 # VECTORIZATION OF INPUT TEXT USING GloVe VECTORS
 
-<a name="introduction" />
-## Introduction
+<a name="about" />
+## About
 
 GloVe is an unsupervised learning algorithm for obtaining vector representations for words. Training is performed on aggregated global word-word co-occurrence statistics from a corpus, and the resulting representations showcase interesting linear substructures of the word vector space.
 
@@ -43,8 +25,8 @@ More information can be found in the paper by Jeffrey Pennington, Richard Socher
 
 The code shared has been utilized for sentiment analysis on Twitter data. The output of the code would be an n-dimensional vector representation of the input text. Dimensions of the output depend on the input Vocabulary file used. Each vector has a fixed number of values for a token; these values become the output dimensions.  Vector files have varying number of dimensions, publically available data has dimensions in the range of 25 to 300.
 
-<a name="introductionExample" />
-### Example
+<a name="introduction" />
+### Introduction
 
 An example text of &quot; **A long time ago in a galaxy far, far away**&quot; would look like below in a 300 dimension common crawl vocabulary file.
 
@@ -252,27 +234,12 @@ The input file should be a whitespace (\t, \n,  \f, \s, \r) delimited file, in w
 
 The text string is the input text, which needs to be vectorized. Input string is separated using a whitespace delimiter.
 
+<a name="dependencies" />
 ## Dependencies
 
-The code has the following dependencies:
+This project depends on numpy and argparse. You can install them with `pip install numpy argparse --upgrade`.
 
-### Python dependency
-
-#### NumPy package
-
-NumPy is the fundamental package for scientific computing with Python. It contains among other things:
-
-- a powerful N-dimensional array object
-- sophisticated (broadcasting) functions
-- tools for integrating C/C++ and Fortran code
-- useful linear algebra, Fourier transform and random number capabilities
-
-Besides its obvious scientific uses, NumPy can also be used as an efficient multi-dimensional container of generic data. Arbitrary data-types can be defined. This allows NumPy to seamlessly and speedily integrate with a wide variety of databases.
-
-#### Argparse package
-
-Command line option and argument parsing.
-
+<a name="functionExplanation" />
 ## Function Explanation
 
 The code contains two functions:
@@ -307,15 +274,18 @@ vocab\_size : Integer object containing the number of feature dimensions
 
 vec : Numpy array containing the numeric vector representation of the sentence
 
+<a name="examples" />
 ## Examples
 
 ### Loading Python file
 
+```python
 import sys
 
 sys.path.append(&lt;path to the Featurization.py directory&gt;
 
 import Featurization
+```
 
 ### Calling the Function
 
@@ -345,9 +315,11 @@ line\_vector : Numpy array containing the numeric vector representation of the s
 
 ### Loading Individual function
 
+```
 import sys
 
 sys.path.append(&lt;path to the Featurization.py directory&gt;
+```
 
 from Featurization import &lt;Function name&gt;
 
@@ -355,7 +327,7 @@ from Featurization import &lt;Function name&gt;
 
 The given code file can be executed as it is to find vectors for an input text. It utilizes input parameters which are explained below
 
-Python FeaturizationExecutor.py -v VOCAB\_FILE -t TEXT
+`python FeaturizationExecutor.py -v VOCAB\_FILE -t TEXT`
 
 **VOCAB\_FILE : Path to the vocabulary file**
 
@@ -363,7 +335,8 @@ Python FeaturizationExecutor.py -v VOCAB\_FILE -t TEXT
 
 The above command will print the word vector for the passed input text
 
-### Help
+<a name="help" />
+## Help
 
 Help file available with the code can be accessed using the below command
 
@@ -377,10 +350,11 @@ This Script is used to create the Vector Representation for Words
 
 optional arguments:
 
-  -h, --help            show this help message and exit
+  `-h, --help            show this help message and exit`
 
 Required Named Arguments:
 
+```
   -v VOCAB\_FILE, --vocab\_file VOCAB\_FILE
 
                         Path of Pre-Trained Word Vectors in tab seperated
@@ -390,8 +364,10 @@ Required Named Arguments:
                         available in the Readme file
 
   -t TEXT, --text TEXT  Input text for which the Vectors need to be formed
+```
 
-# Processing text in Social Media Posts
+<a name="processingSocialMediaPosts" />
+## Processing text in Social Media Posts
 
 Text that is typed in social media posts is unique in the way that it has its own set of grammar. We are trying to extract information and reduce noise by using some of the rules that are known by us.
 
@@ -408,13 +384,11 @@ Identifies the emoticon being used and replaces them with text. This would help 
 
 The function that performs these operations is named as **&quot;cleantext&quot;**
 
-## Input Data
+### Input Data
 
 The code requires a text string as input.
 
-## Dependencies
-
-### Python Dependency
+### Dependencies
 
 #### NLTK Package
 
@@ -428,31 +402,30 @@ This module provides functions for &#39;iterator algebra&#39;. The module standa
 
 This module provides access to the mathematical functions defined by the C standard.
 
-## Function Explanation
+### Function Explanation
 
-### cleantext
+#### cleantext
 
 This function is used to process text from Social media posts and convert emoticons to a text value. The emoticons are classified into four values, &quot;Joking&quot;, &quot;Happy&quot;, &quot;Sad&quot; and blank (&quot; &quot;).
 
-#### Input
+### Input
 
 text : Input text that needs to be cleaned in String format
 
-#### Example
+#####Example
 
 ##### Clean Input Text
 
-text\_clean = cleantext(text)
+`text\_clean = cleantext(text)`
 
-# Removing Stop words and Stemming
+<a name="stopWords" />
+## Removing Stop words and Stemming
 
-Using the NLTK library a Porter-Stemming algorithm is executed on the input text. Also commonly used terms referred as stop words are removed
-
-## Python Dependency
+Using the NLTK library a Porter-Stemming algorithm is executed on the input text. Also commonly used terms referred as stop words are removed.
 
 ### NLTK Package
 
-NLTK is a leading platform for building Python programs to work with human language data. It provides easy-to-use interfaces to  [over 50 corpora and lexical resources](http://nltk.org/nltk_data/) such as WordNet, along with a suite of text processing libraries for classification, tokenization, stemming, tagging, parsing, and semantic reasoning, wrappers for industrial-strength NLP libraries
+NLTK is a leading platform for building Python programs to work with human language data. It provides easy-to-use interfaces to  [over 50 corpora and lexical resources](http://nltk.org/nltk_data/) such as WordNet, along with a suite of text processing libraries for classification, tokenization, stemming, tagging, parsing, and semantic reasoning, wrappers for industrial-strength NLP libraries.
 
 ## Function Explanation
 
@@ -468,16 +441,9 @@ text : Input text that needs to be processed. The text should be in String forma
 
 ##### Execute stemming and stop word removal
 
-text\_clean =  removeStopwordswithStemming(text)
+`text\_clean =  removeStopwordswithStemming(text)`
 
-# Execution of Unit Test
+<a name="testing" />
+## Testing
 
-Unit tests for this module have been added in the file **UnitTest.py**.
-
-Call the **UnitTest.py** file from terminal or command prompt to execute the unit test
-
-#### Example
-
-##### Execution of the unit test
-
-Python UnitTest.py
+Unit tests for this module have been added in the file **UnitTest.py**. To run unit tests, simply call `python UnitTest.py` from the terminal.
