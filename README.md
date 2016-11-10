@@ -214,6 +214,7 @@ There are 4 publically available GloVe vocabulary files
 
 A sample of the GloVe Vocabulary file
 
+```
 the 0.04656 0.21318 -0.0074364 [...] 0.053913
 
 , -0.25539 -0.25723 0.13169 [...] 0.35499
@@ -225,6 +226,7 @@ of -0.076947 -0.021211 0.21271 [...] -0.046533
 to -0.25756 -0.057132 -0.6719 [...] -0.070621 [...]
 
 sandberger 0.429191 -0.296897 0.15011 [...] -0.0590532
+```
 
 Each new line contains a token followed by N-dimensional signed floats, depending on the length of features in each vector
 
